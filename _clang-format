@@ -1,0 +1,30 @@
+BasedOnStyle: Chromium
+AlignAfterOpenBracket: AlwaysBreak
+AlignOperands: true
+AlignTrailingComments: true
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AlignEscapedNewlines: Left
+AlwaysBreakTemplateDeclarations: true
+BinPackArguments: false
+BinPackParameters: false
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBraces: Mozilla
+BreakConstructorInitializersBeforeComma: true
+ColumnLimit: 120
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+ConstructorInitializerIndentWidth: 4
+IndentCaseLabels: true
+IndentWidth: 4
+NamespaceIndentation: All
+PenaltyReturnTypeOnItsOwnLine: 10000
+PointerAlignment: Left
+Standard: Cpp11
+UseTab: Never
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterClass: true
+  AfterStruct: true
+  SplitEmptyFunction: true

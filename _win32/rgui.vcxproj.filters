@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{AEA2BAEB-400F-4489-80E7-04A32A7F9FB2}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{27DD4827-7A9C-4694-B069-AF1FD57F0E8C}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{B6F223DE-887D-41B4-9780-5FFD3B19CE09}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="contrib">
+      <UniqueIdentifier>{E9751833-EC41-4246-9D74-F2EBED34E876}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="contrib\raylib">
+      <UniqueIdentifier>{C85D381E-6478-4BFE-84D9-D2F227FC086D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="contrib\raylib\src">
+      <UniqueIdentifier>{64B4B1F7-0551-4682-A303-7C780EE48B9F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="contrib\raylib\inc">
+      <UniqueIdentifier>{ADA87DCD-3564-4B0B-8D02-F7CFF0C8B832}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\raylib\raudio.c">
+      <Filter>contrib\raylib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\raylib\rcore.c">
+      <Filter>contrib\raylib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\raylib\rglfw.c">
+      <Filter>contrib\raylib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\raylib\rmodels.c">
+      <Filter>contrib\raylib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\raylib\rshapes.c">
+      <Filter>contrib\raylib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\raylib\rtext.c">
+      <Filter>contrib\raylib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\raylib\rtextures.c">
+      <Filter>contrib\raylib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\raylib\utils.c">
+      <Filter>contrib\raylib\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\flexy_layout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\contrib\raylib\config.h">
+      <Filter>contrib\raylib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\raylib\raygui.h">
+      <Filter>contrib\raylib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\raylib\raylib.h">
+      <Filter>contrib\raylib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\raylib\raymath.h">
+      <Filter>contrib\raylib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\raylib\rcamera.h">
+      <Filter>contrib\raylib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\raylib\rgestures.h">
+      <Filter>contrib\raylib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\raylib\rlgl.h">
+      <Filter>contrib\raylib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\raylib\utils.h">
+      <Filter>contrib\raylib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\flexy_layout.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\contrib\raylib\raylib.rc">
+      <Filter>contrib\raylib\inc</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\contrib\raylib\raylib.ico">
+      <Filter>contrib\raylib\inc</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
