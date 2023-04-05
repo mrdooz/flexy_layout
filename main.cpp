@@ -28,14 +28,18 @@ static char* pixels;
 
 //---------------------------------------------------------------------------------------
 template <typename T>
-T GuiSliderT(Rectangle bounds, const char* textLeft, const char* textRight, T value, T minValue, T maxValue)
+T GuiSliderT(Rectangle bounds, const char* text, T value, T minValue, T maxValue)
 {
     // Helper function because I was scared of casting ints to float willy-nilly :)
     float tmp_value = (float)value;
     float tmp_min_value = (float)minValue;
     float tmp_max_value = (float)maxValue;
-    float new_value = GuiSliderPro(
-        bounds, textLeft, textRight, tmp_value, tmp_min_value, tmp_max_value, GuiGetStyle(SLIDER, SLIDER_WIDTH));
+
+    float text_size = (float)GetTextWidth(text) + 100;
+    Rectangle r2 = bounds;
+    r2.width -= text_size;
+    float new_value =
+        GuiSliderPro(r2, NULL, text, tmp_value, tmp_min_value, tmp_max_value, GuiGetStyle(SLIDER, SLIDER_WIDTH));
     return (T)new_value;
 }
 
@@ -43,24 +47,28 @@ T GuiSliderT(Rectangle bounds, const char* textLeft, const char* textRight, T va
 void gui_test()
 {
     {
+        float gui_control_width = 600;
+        float gui_contol_height = 800;
+        int screen_width = GetScreenWidth();
+
         // First create a layout for the gui controls
         flexy::layout_t gui_layout({
-            .x = 600 + 20,
-            .y = 700,
-            .width = container_size,
-            .height = container_size,
+            .x = screen_width - gui_control_width - 20,
+            .y = 20,
+            .width = gui_control_width,
+            .height = gui_contol_height,
         });
 
         int gui_container = gui_layout.add_item({
-            .width = 500.f,
-            .height = 1000.f,
+            .width = gui_control_width,
+            .height = gui_contol_height,
             .horizontal = false,
         });
 
         // Push a common config used by the gui items
         gui_layout.push_config({
             .parent_id = gui_container,
-            .width = 500.f,
+            .width = gui_control_width,
             .height = 30.f,
             .margin = flexy::margin_t{6, 0, 0, 0},
             .padding = flexy::padding_t{0, 0, 0, 100},
@@ -71,7 +79,7 @@ void gui_test()
         gui_layout.add_item({
             .render_callback =
                 [=](void* userdata, const Rectangle& rect) {
-                    num_boxes = GuiSliderT(rect, TextFormat("Num Boxes: %d", num_boxes), NULL, num_boxes, 0, 20);
+                    num_boxes = GuiSliderT(rect, TextFormat("NUM BOXES: %d", num_boxes), num_boxes, 0, 20);
                 },
         });
 
@@ -79,7 +87,7 @@ void gui_test()
             .render_callback =
                 [=](void* userdata, const Rectangle& rect) {
                     container_alignment = GuiSliderT(
-                        rect, TextFormat("CONTAINER ALIGN: %d", container_alignment), NULL, container_alignment, 0, 5);
+                        rect, TextFormat("CONTAINER ALIGN: %d", container_alignment), container_alignment, 0, 5);
                 },
         });
 
@@ -87,14 +95,14 @@ void gui_test()
             .render_callback =
                 [=](void* userdata, const Rectangle& rect) {
                     container_size = GuiSliderT(
-                        rect, TextFormat("Container size: %f", container_size), NULL, container_size, 100.f, 1000.f);
+                        rect, TextFormat("CONTAINER SIZE: %f", container_size), container_size, 100.f, 1000.f);
                 },
         });
 
         // Push a container for the checkboxes, and tell it not to use the existing config
         int cb_container = gui_layout.add_item({
             .parent_id = gui_container,
-            .width = 500.f,
+            .width = gui_control_width,
             .height = 30.f,
             .horizontal = true,
             .use_config_stack = false,
@@ -133,14 +141,14 @@ void gui_test()
         gui_layout.add_item({
             .render_callback =
                 [=](void* userdata, const Rectangle& rect) {
-                    direction = GuiSliderT(rect, TextFormat("Direction: %d", direction), NULL, direction, 0, 1);
+                    direction = GuiSliderT(rect, TextFormat("Direction: %d", direction), direction, 0, 1);
                 },
         });
         gui_layout.add_item({
             .render_callback =
                 [=](void* userdata, const Rectangle& rect) {
                     item_alignment =
-                        GuiSliderT(rect, TextFormat("ITEM ALIGN: %d", item_alignment), NULL, item_alignment, 0, 3);
+                        GuiSliderT(rect, TextFormat("ITEM ALIGN: %d", item_alignment), item_alignment, 0, 3);
                 },
         });
 
@@ -155,7 +163,6 @@ void gui_test()
         multi_row_alignment = GuiSliderT(
             gui_layout.get_rect_for_item(mra_id),
             TextFormat("MULTI-ROW ALIGN: %d", multi_row_alignment),
-            NULL,
             multi_row_alignment,
             0,
             6);
@@ -245,12 +252,13 @@ void gui_test()
 //---------------------------------------------------------------------------------------
 int main(void)
 {
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(1600, 1200, "raylib [core] example - basic window");
+    SetWindowMinSize(1200, 1000);
 
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
         gui_test();
         EndDrawing();
     }
